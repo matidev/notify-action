@@ -1,0 +1,20 @@
+name: Send Notification
+description: Send a notification with payload to the designated URL if the URL and API Key are defined
+author: Tien Mai (matidev@outlook.com)
+inputs:
+  notifyUrl:
+    description: "Notify URL"
+    required: false
+  notifyKey:
+    description: "Notify API Key"
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        if [ -n "${{ inputs.notifyUrl }}" ] && [ -n "${{ inputs.notifyKey }}" ]; then
+          curl -X POST -H "Content-Type: application/json" -H "X-Notify-Key: ${{ inputs.notifyKey }}" \
+               -d "{\"actor\": \"${{ github.actor }}\", \"event_name\": \"${{ github.event_name }}\", \"job\": \"${{ github.job }}\", \"ref_name\": \"${{ github.ref_name }}\", \"ref_type\": \"${{ github.ref_type }}\", \"repository\": \"${{ github.repository }}\", \"run_number\": \"${{ github.run_number }}\", \"triggering_actor\": \"${{ github.triggering_actor }}\", \"workflow\": \"${{ github.workflow }}\"}" \
+               ${{ inputs.notifyUrl }} || true
+        fi
