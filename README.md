@@ -16,3 +16,4 @@ Notify Action for GitHub Actions
       notifyUrl: ${{ secrets.NOTIFY_URL }}
       notifyKey: ${{ secrets.NOTIFY_KEY }}
   ```
+  - Can use `targetBranch` is optional.
