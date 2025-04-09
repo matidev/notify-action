@@ -2,7 +2,7 @@
 
 Notify Action for GitHub Actions
 
-### Installing
+### Usage
 
 - **Settings** > **Actions secrets and variables**
     - `NOTIFY_URL`
