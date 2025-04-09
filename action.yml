@@ -25,6 +25,6 @@ runs:
           fi
 
           curl -X POST -H "Content-Type: application/json" -H "X-Notify-Key: ${{ inputs.notifyKey }}" \
-               -d "{\"actor\":\"${{ github.actor }}\",\"event_name\":\"${{ github.event_name }}\",\"job\":\"${{ github.job }}\",\"ref_name\":\"$TARGET_BRANCH\",\"ref_type\":\"${{ github.ref_type }}\",\"repository\":\"${{ github.repository }}\",\"run_number\":\"${{ github.run_number }}\",\"triggering_actor\":\"${{ github.triggering_actor }}\",\"workflow\":\"${{ github.workflow }}\" \
+               -d "{\"actor\":\"${{ github.actor }}\",\"event_name\":\"${{ github.event_name }}\",\"job\":\"${{ github.job }}\",\"ref_name\":\"$TARGET_BRANCH\",\"ref_type\":\"${{ github.ref_type }}\",\"repository\":\"${{ github.repository }}\",\"run_number\":\"${{ github.run_number }}\",\"triggering_actor\":\"${{ github.triggering_actor }}\",\"workflow\":\"${{ github.workflow }}\"}" \
                ${{ inputs.notifyUrl }} || true
         fi
