@@ -12,7 +12,7 @@ _It is only used for [MatiPlus](https://mati.plus/?utm_source=github-notify-acti
 - Add step to **GitHub Actions** workflow
   ```yaml
   - name: Send Notification
-    uses: matidev/notify-action@v1
+    uses: matidev/notify-action@latest
     if: ${{ success() }}
     with:
       notifyUrl: ${{ secrets.NOTIFY_URL }}
