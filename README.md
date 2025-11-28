@@ -1,21 +1,26 @@
 # notify-action
 
-Notify Action for GitHub Actions
+A lightweight GitHub Action for sending structured notifications to an external endpoint.
 
-_It is only used for [MatiPlus](https://mati.plus/?utm_source=github-notify-action) or partner projects._
+>_This action is intended for use with [MatiPlus](https://mati.plus/?utm_source=github-notify-action) and partner
+projects._
 
 ### Usage
 
-- **Settings** > **Actions secrets and variables**
+1. Configure Repository Secrets
+
+   Go to **Settings → Secrets and variables → Actions → Repository secrets** and add:
     - `NOTIFY_URL`
     - `NOTIFY_KEY`
-- Add step to **GitHub Actions** workflow
-  ```yaml
-  - name: Send Notification
-    uses: matidev/notify-action@latest
-    if: ${{ success() }}
-    with:
-      notifyUrl: ${{ secrets.NOTIFY_URL }}
-      notifyKey: ${{ secrets.NOTIFY_KEY }}
-  ```
-- Can use `targetBranch` is optional.
+
+2. Add Step to **GitHub Actions** Workflow
+
+    ```yaml
+    - name: Send Notification
+      uses: matidev/notify-action@latest
+      if: ${{ success() }}
+      with:
+        notifyUrl: ${{ secrets.NOTIFY_URL }}
+        notifyKey: ${{ secrets.NOTIFY_KEY }}
+    ```
+   >_Can use `targetBranch` is optional._

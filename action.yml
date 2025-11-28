@@ -1,10 +1,10 @@
 name: Send Notification
-description: Send a notification with payload to the designated URL if the URL and API Key are defined
+description: Send a notification payload to a designated URL when both the URL and API key are provided.
 author: Tien Mai (matidev@outlook.com)
 
 inputs:
   notifyUrl:
-    description: "Notify URL Endpoint"
+    description: "Notify Endpoint URL"
     required: false
   notifyKey:
     description: "Notify API Key"
@@ -34,6 +34,18 @@ runs:
 
         TARGET_BRANCH="${TARGET_BRANCH:-${{ github.ref_name }}}"
 
-        curl -X POST -H "Content-Type: application/json" -H "X-Notify-Key: $NOTIFY_KEY" \
-               -d "{\"actor\":\"${{ github.actor }}\",\"event_name\":\"${{ github.event_name }}\",\"job\":\"${{ github.job }}\",\"ref_name\":\"$TARGET_BRANCH\",\"ref_type\":\"${{ github.ref_type }}\",\"repository\":\"${{ github.repository }}\",\"run_number\":\"${{ github.run_number }}\",\"triggering_actor\":\"${{ github.triggering_actor }}\",\"workflow\":\"${{ github.workflow }}\"}" \
-               "$NOTIFY_URL" || true
+        curl -X POST \
+             -H "Content-Type: application/json" \
+             -H "X-Notify-Key: $NOTIFY_KEY" \
+             -d "{
+                  \"actor\": \"${{ github.actor }}\",
+                  \"event_name\": \"${{ github.event_name }}\",
+                  \"job\": \"${{ github.job }}\",
+                  \"ref_name\": \"$TARGET_BRANCH\",
+                  \"ref_type\": \"${{ github.ref_type }}\",
+                  \"repository\": \"${{ github.repository }}\",
+                  \"run_number\": \"${{ github.run_number }}\",
+                  \"triggering_actor\": \"${{ github.triggering_actor }}\",
+                  \"workflow\": \"${{ github.workflow }}\"
+                 }" \
+             "$NOTIFY_URL" || true
