@@ -2,7 +2,7 @@
 
 A lightweight GitHub Action for sending structured notifications to an external endpoint.
 
->_This action is intended for use with [MatiPlus](https://mati.plus/?utm_source=github-notify-action) and partner
+>_This action is intended for use with [MatiPlus](https://matiplus.com/?utm_source=github-notify-action) and partner
 projects._
 
 ### Usage
