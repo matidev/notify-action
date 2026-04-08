@@ -34,7 +34,7 @@ runs:
 
         TARGET_BRANCH="${TARGET_BRANCH:-${{ github.ref_name }}}"
 
-        curl -X POST \
+        curl -s -o /dev/null -X POST \
              -H "Content-Type: application/json" \
              -H "X-Notify-Key: $NOTIFY_KEY" \
              -d "{
