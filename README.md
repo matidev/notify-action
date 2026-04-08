@@ -2,7 +2,7 @@
 
 A lightweight GitHub Action for sending structured notifications to an external endpoint.
 
->_This action is intended for use with [MatiPlus](https://matiplus.com/?utm_source=github-notify-action) and partner
+> _This action is intended for use with [MatiPlus](https://matiplus.com/?utm_source=github-notify-action) and partner
 projects._
 
 ### Usage
@@ -13,7 +13,7 @@ projects._
     - `NOTIFY_URL`
     - `NOTIFY_KEY`
 
-2. Add Step to **GitHub Actions** Workflow
+2. Add the following step to your **GitHub Actions** workflow file
 
     ```yaml
     - name: Send Notification
@@ -23,4 +23,12 @@ projects._
         notifyUrl: ${{ secrets.NOTIFY_URL }}
         notifyKey: ${{ secrets.NOTIFY_KEY }}
     ```
-   >_Can use `targetBranch` is optional._
+   > _Can use `targetBranch` is optional.
+   > If provided, it will override the `ref_name` value in the payload_
+
+### Publishing to `latest` Tag
+
+```bash
+git tag -f latest
+git push origin latest --force
+```
